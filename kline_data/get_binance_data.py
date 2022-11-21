@@ -4,24 +4,27 @@ from rich.pretty import pprint
 from rich.progress import track
 import time
 import csv
+from dotenv import dotenv_values
 
 #data format 
 # time,open,high,low,close,Volume,kline close time,quote asset volume,no. of trades,taker buy base asset volume,taker buy quote asset volume ,unused field(ignore)
 
+config = dotenv_values(".env")
 
-binance_api_key = 'eZhSMpuG6pfBbYOXJv4ehNvBqVcNWv1CoFuyisrTolsppLKAxT0qDQwCz1XlLkiz'
-binance_secret_key = 'hLceVc9V8cycB6XAsQjxU20fmiiTmmteezKukKvJXGb1ETuWUyQGjOGURqfxsElu'
+binance_api_key = config['BINANCE_API_KEY']
+binance_secret_key = config['BINANCE_SECRET_KEY']
 
-symbol = 'ETHBUSD'
-fromDate = "10 Sept, 2022"
-toDate = "15 Oct, 2022"
+symbol = 'BTCBUSD'
+fromDate = "1 Aug, 2022"
+toDate = "1 Nov, 2022"
+timeFrame = '5_minute'
 
 fromDateEscaped = fromDate.replace(' ','_').replace(',','')
 toDateEscaped = toDate.replace(' ','_').replace(',','')
 
-file_path = f'/home/zoro/hahaha/backtesting/kline_data/{symbol}/5_minute/'
+file_path = f'/home/zoro/hahaha/backtesting/kline_data/{symbol}/{timeFrame}/'
 
-file_name = f'5min_ethbusd_{fromDateEscaped}_to_{toDateEscaped}.csv'
+file_name = f'{timeFrame}_btcbusd_{fromDateEscaped}_to_{toDateEscaped}.csv'
 
 
 
