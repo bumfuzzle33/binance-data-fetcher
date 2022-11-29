@@ -52,7 +52,7 @@ leverage = 0
 money = 10_000
 
 # isStop = False
-isStop = True
+isStop = False
 
 if(not isStop):
     bt = Backtest(df, RsiOcillator, cash=money, commission=commisionValue)
@@ -60,7 +60,7 @@ if(not isStop):
     stats = bt.run()
     print(stats)
 
-    # bt.plot()
+    bt.plot()
 
 # print (df)
 
